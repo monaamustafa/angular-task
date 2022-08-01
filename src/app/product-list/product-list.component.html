@@ -1,0 +1,14 @@
+<div class="container">
+  
+  <div class="d-flex justify-content-around">
+
+    <a routerLink="/login">login  </a> 
+    <a routerLink="/addproduct">add product</a>
+  </div>
+  <div class="row">
+
+    <h2>Products:</h2>
+      <app-product-card class="col-4" *ngFor="let user of alluser" [userData]="user"
+      (OnSelectedUser)="getSelecteduser($event)"></app-product-card>
+  </div>
+</div>

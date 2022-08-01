@@ -1,0 +1,22 @@
+<form #myform="ngForm" (ngSubmit)="login2(myform.value)">
+  <div class="row g-3 m-3" >
+
+    <div class="col-md-4">
+      <label class="form-label" for="">Username</label>
+      <input class="form-control" type="text" name="loginusername" [(ngModel)]="userlogin.username" #usernameref="ngModel" required
+          minlength="5">
+      <p [hidden]="usernameref.valid || usernameref.pristine" style="color:red;">Error input not valid</p>
+      <p *ngIf="usernameref.errors?.['minlength']" style="color:red;">username minlength is 5</p>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label" for="">Password</label>
+      <input class="form-control" type="password" name="userpassword" [(ngModel)]="userlogin.password" #passref="ngModel" required 
+        minlength="4">
+      <p *ngIf="passref.errors?.['minlength']" style="color:red;">password minlength is 4</p>
+    </div>
+
+  </div>
+
+  <input  class="btn btn-primary m-5" type="button" value="login" (click)="login2(myform.value)" [disabled]="myform.invalid">
+</form>

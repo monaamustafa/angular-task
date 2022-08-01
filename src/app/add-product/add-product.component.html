@@ -1,0 +1,49 @@
+<h2 class="m-3">Add Product</h2>
+<form [formGroup]="myform">
+  <div class="row g-3 m-3" >
+
+    <div class="col-md-4">
+      <label class="form-label" for="">Title</label>
+      <input class="form-control" type="text" formControlName="title"> 
+      <p style="color:red;" *ngIf="title.errors?.['minlength']">Error minlength is {{title.errors?.['minlength']['requiredLength']}}
+       </p>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label" for="">Description</label>
+      <input class="form-control" type="text" formControlName="description">
+    </div>
+    <div>
+      <div class="col-md-4">
+        <label class="form-label" for="">Category</label>
+        <input class="form-control" type="text" formControlName="category">
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label" for="">Price</label>
+        <input class="form-control" type="number" formControlName="price">
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label" for="">Image</label>
+        <input class="form-control" type="text" formControlName="image">
+      </div>
+    </div>
+
+    <div formGroupName="rating">
+      <div class="col-md-4">
+        <label class="form-label" for="">Rate</label>
+        <input class="form-control" type="number" formControlName="rate">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label"  for="">Count</label>
+        <input class="form-control" type="number" formControlName="count">
+      </div>
+    </div>
+
+  </div>
+
+  <input class="btn btn-primary m-5" type="button" value="save" (click)="adduser(myform.value)" [disabled]="myform.invalid">
+</form>
+
+
